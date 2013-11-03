@@ -62,11 +62,13 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * edit ```bower.json```, add: ```"appPath": "client/app"```
 * edit ```Gruntfile.js```, add ```client``` in front of ```bower.json``` and ```karma.conf.js```
 * add to ```karma.conf.js```
+
 	```
 	'app/bower_components/angular-cookies/angular-cookies.js',
  	'app/bower_components/angular-resource/angular-resource.js',
  	'app/bower_components/angular-sanitize/angular-sanitize.js',
  	```
+ 	
  * ```grunt test```
  * Test app is working by pointing your browser to http://localhost:3000
 
