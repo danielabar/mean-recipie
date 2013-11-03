@@ -49,6 +49,11 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * ```mv package.json package.json.express``` (because the yeoman generator will overwrite)
 * ```yo angular``` (yes to all questions except sass)
 * merge ```package.json.express``` contents into ```package.json```
+* edit ```server.js``` so static files are read from client app
+	```
+	app.use(express.static(path.join(__dirname, '/client/app')));
+	```
+* ``` mv app client```
 * ```mv .bowerrc client```
 * ```mv bower.json client```
 * ```mv karma-e2e.conf.js client```
