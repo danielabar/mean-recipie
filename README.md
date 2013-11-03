@@ -3,17 +3,17 @@ mean-recipie
 
 An example of setting up a project using the MEAN (link needed) stack.
 
-This project is inspired by a presentation at the Toronto Angular Meetup (link needed) on scaffolding applications for the MEAN stack.
+This project is inspired by a presentation at the [Toronto Angular Meetup](http://www.meetup.com/AngularJS-Toronto/) on scaffolding applications for the MEAN stack.
 
-The idea is to use generators rather than seeds, then customize according to your needs.
+The idea is to use generators rather than seeds, then customize according to your needs. Watch the presentation [here](http://www.youtube.com/watch?v=w1mJuX-vA0o).
 
 For this project, the following generators are used:
 
-1. express (link needed)
+1. [express](https://github.com/visionmedia/express)
 When installed globally, express can be used at the command line to scaffold an express application.
 This is the server side of the application. Most of the generated directories and files are moved to the ```server``` directory.
 
-2. yeoman angular generator (link needed)
+2. [Yeoman Angular Generator](https://github.com/yeoman/generator-angular)
 This is the client side of the application using Angular and Bower for dependency management. 
 Most of the generated directories and files are moved to the ```client``` directory.
 
@@ -62,6 +62,6 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
  	'app/bower_components/angular-resource/angular-resource.js',
  	'app/bower_components/angular-sanitize/angular-sanitize.js',
  	```
- * ```grunt test111
+ * ```grunt test```
  * Test app is working by pointing your browser to http://localhost:3000
 
