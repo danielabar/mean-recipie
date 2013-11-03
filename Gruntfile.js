@@ -14,7 +14,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     yeoman: {
       // configurable paths
-      app: require('./bower.json').appPath || 'app',
+      app: require('./client/bower.json').appPath || 'app',
       dist: 'dist'
     },
     watch: {
@@ -265,7 +265,7 @@ module.exports = function (grunt) {
     },
     karma: {
       unit: {
-        configFile: 'karma.conf.js',
+        configFile: 'client/karma.conf.js',
         singleRun: true
       }
     },
