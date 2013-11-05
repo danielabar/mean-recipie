@@ -3,3 +3,11 @@
 		<h2>Ready to play: </h2>{{name}}
 	</div>
 </div>
+
+<div class="row">
+	<div class="span4">
+		<ul>
+			<li ng-repeat="card in game.deck.cards">{{card.value}} - {{card.translated}}</li>
+		</ul>
+	</div>
+</div>
