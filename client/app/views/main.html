@@ -1,6 +1,8 @@
-<div class="hero-unit">
-  <h1>Select a game</h1>
-  <ul>
-      <li ng-repeat="deck in decks">{{deck.name}}</li>
-  </ul>
+<div class="row">
+	<div class="span6">
+  		<h1>Select a game</h1>
+  		<ul>
+      		<li ng-repeat="deck in decks"><a href="#/game/{{deck.name}}">{{deck.name}}</a></li>
+  		</ul>
+	</div>
 </div>
