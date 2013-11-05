@@ -3,16 +3,16 @@
 describe('Service: Gameservice', function () {
 
   // load the service's module
-  beforeEach(module('meanrecipieApp'));
+  beforeEach(module('meanRecipieApp'));
 
   // instantiate service
-  var Gameservice;
-  beforeEach(inject(function (_Gameservice_) {
-    Gameservice = _Gameservice_;
+  var GameService;
+  beforeEach(inject(function (_GameService_) {
+    GameService = _GameService_;
   }));
 
   it('should do something', function () {
-    expect(!!Gameservice).toBe(true);
+    expect(!!GameService).toBe(true);
   });
 
 });
