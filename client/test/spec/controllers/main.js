@@ -2,21 +2,27 @@
 
 describe('Controller: MainCtrl', function () {
 
-  // load the controller's module
+  var MainCtrl;
+  var scope;
+  var $httpBackend;
+  var Deck;
+  
   beforeEach(module('meanRecipieApp'));
-
-  var MainCtrl,
-    scope;
-
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function (_$httpBackend_, $controller, $rootScope, Deck) {
+    Deck = Deck;
+    $httpBackend = _$httpBackend_;
+    $httpBackend.expectGET('/deck').
+          respond([{name: 'Numbers'}, {name: 'Days of the week'}]);
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {
       $scope: scope
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+  it('List of decks is set in scope', function () {
+  	// expect(scope.decks).toBeUndefined();
+    $httpBackend.flush();
+    expect(scope.decks.length).toBe(2);
+    console.log(angular.toJson((scope.decks)));
   });
 });

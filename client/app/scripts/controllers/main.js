@@ -1,10 +1,6 @@
 'use strict';
 
 angular.module('meanRecipieApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, Deck) {
+  	$scope.decks = Deck.query();
   });
