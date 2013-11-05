@@ -15,10 +15,10 @@ module.exports = function(config) {
       'app/bower_components/angular-cookies/angular-cookies.js',
       'app/bower_components/angular-resource/angular-resource.js',
       'app/bower_components/angular-sanitize/angular-sanitize.js',
+      'app/scripts/app.js',
+      'app/scripts/services/*.js',
+      'app/scripts/controllers/*.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
-      'app/scripts/*.js',
-      'app/scripts/**/*.js',
-      'test/mock/**/*.js',
       'test/spec/**/*.js'
     ],
 

@@ -59,7 +59,7 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * ```mv karma-e2e.conf.js client```
 * ```mv karma.conf.js client```
 * ```mv test client```
-* edit ```bower.json```, add: ```"appPath": "client/app"```
+* edit ```bower.json```, add: ```"appPath": "app"```
 * edit ```Gruntfile.js```, add ```client``` in front of ```bower.json``` and ```karma.conf.js```
 * add to ```karma.conf.js```
 
@@ -71,4 +71,9 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
  	
  * ```grunt test```
  * Test app is working by pointing your browser to http://localhost:3000
+
+ ## Working with yo
+
+ Rather than running commands from the root of the project directory, cd to client. Then can run, for example:
+ ```yo angular:factory Deck```
 
