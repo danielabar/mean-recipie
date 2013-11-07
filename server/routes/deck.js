@@ -12,4 +12,16 @@ exports.get = function(req, res) {
 			res.json(data);
 		}
 	});
-}
+};
+
+exports.getByName = function(req, res) {
+	var name = req.params.name;
+	Deck.findOne({'name': name}, function(err, data) {
+		if (err) {
+			logger.error(module + ' get deck by name err=' + err);
+			res.send(err);
+		} else {
+			res.send(data);
+		}
+	});
+};
