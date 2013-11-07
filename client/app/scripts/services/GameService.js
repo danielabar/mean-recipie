@@ -3,16 +3,17 @@
 angular.module('meanRecipieApp')
   .factory('GameService', function () {
 
-    var game = {};
+    var game = {
+    	scoreBoard: {}
+    };
     var cardIndex = 0;
-    var scoreBoard = {};
 
     return {
       
       initScoreBoard: function() {
-    	scoreBoard.score = 0;
+    	game.scoreBoard.score = 0;
     	if (game.deck) {
-    		scoreBoard.outOf = game.deck.cards.length;
+    		game.scoreBoard.outOf = game.deck.cards.length;
     	}
       },
 
@@ -41,13 +42,13 @@ angular.module('meanRecipieApp')
 
       updateScoreBoard: function(guessResult) {
       	if(guessResult) {
-      		scoreBoard.score += 1;
+      		game.scoreBoard.score += 1;
       	}
-      	return scoreBoard;
+      	return game.scoreBoard;
       },
 
       getScoreBoard: function() {
-      	return scoreBoard;
+      	return game.scoreBoard;
       }
 
     };
