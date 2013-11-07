@@ -8,13 +8,22 @@ describe('Controller: GameCtrl', function () {
   var GameCtrl;
   var scope;
   var routeParams;
+  var mockGameService = {
+  	getGame: function() {
+  		return {};
+  	},
+  	getNextCard: function() {
+  		return {name: "Cities", language: "Italian"};
+  	}
+  };
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
     routeParams = {};
     GameCtrl = $controller('GameCtrl', {
-      $scope: scope
+      $scope: scope,
+      GameService: mockGameService
     });
   }));
 
@@ -22,7 +31,8 @@ describe('Controller: GameCtrl', function () {
         routeParams.name = 'Some Name';
         GameCtrl = $controller('GameCtrl', {
             $scope: scope,
-            $routeParams : routeParams
+            $routeParams : routeParams,
+            GameService: mockGameService
         });        
         expect(scope.name).toEqual('Some Name');
     }));

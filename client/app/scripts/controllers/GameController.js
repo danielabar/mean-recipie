@@ -9,7 +9,7 @@ angular.module('meanRecipieApp')
     $scope.currentCard = GameService.getNextCard();
 
     $scope.checkGuess = function() {
-    	if ($scope.currentCard.value === $scope.guess) {
+    	if ($scope.currentCard.translated === $scope.guess) {
     		$scope.correct = true;
     	} else {
     		$scope.incorrect = true;
@@ -17,13 +17,11 @@ angular.module('meanRecipieApp')
     }
 
     $scope.moveAhead = function() {
-    	$scope.currentCard = GameService.getNextCard(); // TODO: handle when we're at the end of the deck
+    	// TODO: handle when we're at the end of the deck
+    	$scope.currentCard = GameService.getNextCard(); 
     	$scope.correct = false;
     	$scope.incorrect = false;
     	$scope.guess = " ";
-
-    	// TEST
-    	$scope.currentCard.value = "BOO";
     }
 
   });

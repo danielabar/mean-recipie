@@ -15,8 +15,10 @@ angular.module('meanRecipieApp')
         game.deck = deck;
       },
       getNextCard: function() {
-      	return game.deck.cards[cardIndex];
+      	var nextCard = game.deck.cards[cardIndex];
       	cardIndex = cardIndex + 1;
+      	console.log('GameService returning next card: ' + angular.toJson((nextCard)));
+      	return nextCard;
       }
     };
   });
