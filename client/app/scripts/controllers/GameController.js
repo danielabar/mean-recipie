@@ -20,7 +20,7 @@ angular.module('meanRecipieApp')
     }
 
     $scope.checkGuess = function() {
-    	var result = GameService.checkGuess($scope.currentCard.translated, $scope.guess);
+    	var result = GameService.checkGuess($scope.currentCard, $scope.guess);
     	$scope.scoreBoard = GameService.updateScoreBoard(result);
     	$scope.feedback = GameService.buildFeedback(result, $scope.currentCard);
     	moveAhead();

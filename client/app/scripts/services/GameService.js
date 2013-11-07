@@ -4,7 +4,8 @@ angular.module('meanRecipieApp')
   .factory('GameService', function () {
 
     var game = {
-    	scoreBoard: {}
+    	scoreBoard: {},
+    	incorrectCards: []
     };
     var cardIndex = 0;
 
@@ -33,11 +34,13 @@ angular.module('meanRecipieApp')
       	return nextCard;
       },
       
-      checkGuess: function(translated, guess) {
-      	if (translated === guess) {
+      checkGuess: function(card, guess) {
+      	if (card.translated === guess) {
       		return true;
+      	} else {
+      		game.incorrectCards.push(card);
+      		return false;
       	}
-      	return false;
       },
 
       updateScoreBoard: function(guessResult) {
