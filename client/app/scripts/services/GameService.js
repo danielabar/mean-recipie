@@ -5,20 +5,35 @@ angular.module('meanRecipieApp')
 
     var game = {};
     var cardIndex = 0;
+    var score = 0;
 
-    // Public API here
     return {
       getGame: function () {
         return game;
       },
+      
       setGame: function (deck) {
         game.deck = deck;
       },
+      
       getNextCard: function() {
       	var nextCard = game.deck.cards[cardIndex];
       	cardIndex = cardIndex + 1;
-      	console.log('GameService returning next card: ' + angular.toJson((nextCard)));
       	return nextCard;
+      },
+      
+      checkGuess: function(translated, guess) {
+      	if (translated === guess) {
+      		return true;
+      	}
+      	return false;
+      },
+
+      updateScore: function(guessResult) {
+      	if(guessResult) {
+      		score = score + 1;
+      	}
       }
+
     };
   });

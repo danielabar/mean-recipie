@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="span6">
-		<h2>Ready to play: {{name}}</h2>
+		<h2>Playing: {{name}}</h2>
 	</div>
 </div>
 
@@ -9,17 +9,13 @@
 		{{currentCard.value}}
 	</div>
 	<div class="span2">
-		<input type="text" ng-model="guess" />
+		<input type="text" ng-model="guess" ng-change="clearFeedback()" />
 	</div>
 	<div class="span2">
 		<button ng-click="checkGuess()" type="button" class="btn btn-info">Check</button>
 	</div>
 	<div class="span1">
-		<span ng-show="correct">Correct</span>
-		<span ng-show="incorrect">Incorrect</span>
-	</div>
-	<div class="span2">
-		<button ng-click="moveAhead()" type="button" class="btn">Next</button>
+		<span ng-show="feedback">{{feedback}}</span>
 	</div>
 </div>
 

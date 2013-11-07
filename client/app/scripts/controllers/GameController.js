@@ -2,10 +2,10 @@
 
 angular.module('meanRecipieApp')
   .controller('GameCtrl', function ($scope, $routeParams, GameService, Deck) {
+    
     $scope.name = $routeParams.name;
-    
     $scope.game = GameService.getGame();
-    
+
     // If user refreshed page, GameService state is lost, refetch the deck from api
     if(!$scope.game.deck) {
     	var deck = Deck.get({name:$scope.name}, function(res) {
@@ -17,14 +17,17 @@ angular.module('meanRecipieApp')
     }
 
     $scope.checkGuess = function() {
-    	if ($scope.currentCard.translated === $scope.guess) {
-    		$scope.correct = true;
-    	} else {
-    		$scope.incorrect = true;
-    	}
+    	var result = GameService.checkGuess($scope.currentCard.translated, $scope.guess);
+    	$scope.feedback = result ? 'Correct' : 'Incorrect';
+    	GameService.updateScore(result);
+    	moveAhead();
     }
 
-    $scope.moveAhead = function() {
+    $scope.clearFeedback = function() {
+    	$scope.feedback = null;
+    }
+
+    var moveAhead = function() {
     	// TODO: handle when we're at the end of the deck
     	$scope.currentCard = GameService.getNextCard(); 
     	$scope.correct = false;
