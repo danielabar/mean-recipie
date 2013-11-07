@@ -14,11 +14,13 @@
 	<div class="span2">
 		<button ng-click="checkGuess()" type="button" class="btn btn-info">Check</button>
 	</div>
-	<div class="span1">
-		<span ng-show="feedback">{{feedback}}</span>
-	</div>
-	<div class="span2">
+	<div class="span3">
 		<span>Score: {{scoreBoard.score}} correct out of {{scoreBoard.outOf}}</span>
+	</div>
+</div>
+<div class="row">
+	<div class="span4">
+		<span ng-show="feedback" class="alert alert-error">{{feedback}}</span>
 	</div>
 </div>
 
