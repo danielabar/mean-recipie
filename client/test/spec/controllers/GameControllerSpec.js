@@ -10,7 +10,7 @@ describe('Controller: GameCtrl', function () {
   var routeParams;
   var mockGameService = {
   	getGame: function() {
-  		return {};
+  		return {deck: "this is a deck"};
   	},
   	getNextCard: function() {
   		return {name: "Cities", language: "Italian"};

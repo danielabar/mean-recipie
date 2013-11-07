@@ -2,5 +2,5 @@
 
 angular.module('meanRecipieApp')
   .factory('Deck', function ($resource) {
-  	return $resource('/deck');
+  	return $resource('/deck/:name');
   });

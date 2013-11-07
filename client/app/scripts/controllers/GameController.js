@@ -1,12 +1,20 @@
 'use strict';
 
 angular.module('meanRecipieApp')
-  .controller('GameCtrl', function ($scope, $routeParams, GameService) {
+  .controller('GameCtrl', function ($scope, $routeParams, GameService, Deck) {
     $scope.name = $routeParams.name;
     
-    // TODO: if game not found, need to retrieve it (i.e. Deck) by name from service
     $scope.game = GameService.getGame();
-    $scope.currentCard = GameService.getNextCard();
+    
+    // If user refreshed page, GameService state is lost, refetch the deck from api
+    if(!$scope.game.deck) {
+    	var deck = Deck.get({name:$scope.name}, function(res) {
+    		$scope.game.deck = deck;
+    		$scope.currentCard = GameService.getNextCard();
+		});
+    } else {
+    	$scope.currentCard = GameService.getNextCard();
+    }
 
     $scope.checkGuess = function() {
     	if ($scope.currentCard.translated === $scope.guess) {
