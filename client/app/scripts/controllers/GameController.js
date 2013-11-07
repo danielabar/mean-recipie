@@ -5,11 +5,14 @@ angular.module('meanRecipieApp')
     
     $scope.name = $routeParams.name;
     $scope.game = GameService.getGame();
+    $scope.scoreBoard = GameService.getScoreBoard();
 
     // If user refreshed page, GameService state is lost, refetch the deck from api
     if(!$scope.game.deck) {
     	var deck = Deck.get({name:$scope.name}, function(res) {
-    		$scope.game.deck = deck;
+    		GameService.setGame(deck);
+    		$scope.game = GameService.getGame();
+    		$scope.scoreBoard = GameService.getScoreBoard();
     		$scope.currentCard = GameService.getNextCard();
 		});
     } else {
@@ -18,8 +21,8 @@ angular.module('meanRecipieApp')
 
     $scope.checkGuess = function() {
     	var result = GameService.checkGuess($scope.currentCard.translated, $scope.guess);
+    	$scope.scoreBoard = GameService.updateScoreBoard(result);
     	$scope.feedback = result ? 'Correct' : 'Incorrect';
-    	GameService.updateScore(result);
     	moveAhead();
     }
 
@@ -27,8 +30,8 @@ angular.module('meanRecipieApp')
     	$scope.feedback = null;
     }
 
+    // TODO: handle when we're at the end of the deck
     var moveAhead = function() {
-    	// TODO: handle when we're at the end of the deck
     	$scope.currentCard = GameService.getNextCard(); 
     	$scope.correct = false;
     	$scope.incorrect = false;

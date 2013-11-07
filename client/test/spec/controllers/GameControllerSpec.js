@@ -14,6 +14,9 @@ describe('Controller: GameCtrl', function () {
   	},
   	getNextCard: function() {
   		return {name: "Cities", language: "Italian"};
+  	},
+  	getScoreBoard: function() {
+  		return {score: 0, outOf: 10}
   	}
   };
 

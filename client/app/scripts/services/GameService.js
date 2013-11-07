@@ -5,17 +5,27 @@ angular.module('meanRecipieApp')
 
     var game = {};
     var cardIndex = 0;
-    var score = 0;
+    var scoreBoard = {};
 
     return {
+      
+      initScoreBoard: function() {
+    	scoreBoard.score = 0;
+    	if (game.deck) {
+    		scoreBoard.outOf = game.deck.cards.length;
+    	}
+      },
+
       getGame: function () {
+      	this.initScoreBoard();
         return game;
       },
       
       setGame: function (deck) {
         game.deck = deck;
+        this.initScoreBoard();
       },
-      
+
       getNextCard: function() {
       	var nextCard = game.deck.cards[cardIndex];
       	cardIndex = cardIndex + 1;
@@ -29,10 +39,15 @@ angular.module('meanRecipieApp')
       	return false;
       },
 
-      updateScore: function(guessResult) {
+      updateScoreBoard: function(guessResult) {
       	if(guessResult) {
-      		score = score + 1;
+      		scoreBoard.score += 1;
       	}
+      	return scoreBoard;
+      },
+
+      getScoreBoard: function() {
+      	return scoreBoard;
       }
 
     };
