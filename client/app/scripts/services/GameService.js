@@ -29,9 +29,12 @@ angular.module('meanRecipieApp')
       },
 
       getNextCard: function() {
-      	var nextCard = game.deck.cards[cardIndex];
-      	cardIndex = cardIndex + 1;
-      	return nextCard;
+      	if (cardIndex < game.deck.cards.length) {
+	      	var nextCard = game.deck.cards[cardIndex];
+	      	cardIndex = cardIndex + 1;
+	      	return nextCard;
+      	} 
+      	return null;
       },
       
       checkGuess: function(card, guess) {

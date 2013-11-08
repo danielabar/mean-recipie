@@ -9,10 +9,10 @@
 		{{currentCard.value}}
 	</div>
 	<div class="span2">
-		<input type="text" ng-model="guess" ng-change="clearFeedback()" />
+		<input type="text" ng-model="guess" focus-me="focusInput" ng-change="clearFeedback()" />
 	</div>
 	<div class="span2">
-		<button ng-click="checkGuess()" type="button" class="btn btn-info">Check</button>
+		<button ng-click="checkGuess(); focusInput=true" type="button" class="btn btn-info">Check</button>
 	</div>
 	<div class="span3">
 		<span>Score: {{scoreBoard.score}} correct out of {{scoreBoard.outOf}}</span>
