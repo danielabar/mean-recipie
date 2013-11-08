@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanRecipieApp')
-  .controller('GameCtrl', function ($scope, $routeParams, GameService, Deck) {
+  .controller('GameCtrl', function ($scope, $routeParams, GameService, Deck, $location) {
     
     $scope.name = $routeParams.name;
     $scope.game = GameService.getGame();
@@ -33,9 +33,13 @@ angular.module('meanRecipieApp')
     // TODO: handle when we're at the end of the deck
     var moveAhead = function() {
     	$scope.currentCard = GameService.getNextCard(); 
-    	$scope.correct = false;
-    	$scope.incorrect = false;
-    	$scope.guess = " ";
+    	if ($scope.currentCard) {
+	    	$scope.correct = false;
+	    	$scope.incorrect = false;
+	    	$scope.guess = " ";
+    	} else {
+    		$location.path('/score');
+    	}
     }
 
   });
