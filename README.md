@@ -209,6 +209,31 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
     <script src="bower_components/d3-tip/index.js"></script>
     ```
 
+* ```cd client/app/scripts```
+* ```mkdir lib && cd lib && touch underscore-module.js``` 
+* edit underscore-module.js so it looks like this:
+	```
+	var underscore = angular.module('underscore', []);
+	underscore.factory('_', function() {
+	  return window._; // assumes underscore has already been loaded on the page
+	});
+	```
+
+* modify ```client/app.js``` to add the module dependencies:
+	```
+	angular.module('scafkata', [
+		'ngRoute',
+		'ngCookies',
+		'ngResource',
+		'ngSanitize',
+		'ngAnimate',
+		'ui.bootstrap',
+		'underscore'
+	])
+	```   
+
+* edit index.html near where app.js is and add ```<script src="scripts/lib/underscore-module.js"></script>``` 
+
 ## Add Angular-Bootstrap, D3 and Underscore
 
 ## Configure LiveReload
