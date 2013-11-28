@@ -234,8 +234,6 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 
 * edit index.html near where app.js is and add ```<script src="scripts/lib/underscore-module.js"></script>``` 
 
-## Add Angular-Bootstrap, D3 and Underscore
-
 ## Configure LiveReload
 
 ## Working with yo
