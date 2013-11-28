@@ -182,9 +182,34 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 	* just before server is created add ```app.get('/widget', widget.get);```
 * test the API in browser ```http://localhost:3000/widget```
 
-## Upgrade Angular
+## Upgrade Angular and add some useful utilities
+* ```cd client```
+* ```bower install angular#1.2.1 --save```
+* ```bower install angular-route#1.2.1 --save```
+* ```bower install angular-resource#1.2.1 --save```
+* ```bower install angular-cookies#1.2.1 --save```
+* ```bower install angular-sanitize#1.2.1 --save```
+* ```bower install angular-animate#1.2.1 --save```
+* ```bower install angular-mocks#1.2.1 --save-dev```
+* ```bower install angular-scenario#1.2.1 --save-dev```
+* ```bower install angular-bootstrap#0.6.0 --save```
+* ```bower install underscore#1.5.2 --save```
+* ```bower install d3 --save```
+* ```bower install d3-tip#0.6.2 --save```
+* modify the angular section of index.html so it looks like this:
+	```
+	<script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/d3-tip/index.js"></script>
+    ```
 
-## Using Bower
+## Add Angular-Bootstrap, D3 and Underscore
 
 ## Configure LiveReload
 
