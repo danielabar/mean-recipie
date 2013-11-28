@@ -161,6 +161,7 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * edit WidgetAPI.js to look like this:
 	```
 	var mongoose = require('mongoose');
+	var logger = require('../lib/log');
 	var Widget = mongoose.model('Widget');
 
 	exports.get = function(req, res) {
@@ -169,7 +170,7 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 				logger.error(module + ' get all widget err: ' + err);
 				res.send(err);
 			} else {
-				console.log('data to be returned: ' + JSON.stringify(data));
+				logger.info('data to be returned: ' + JSON.stringify(data));
 				res.json(data);
 			}
 		});
@@ -177,7 +178,7 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 	```
 
 * edit ```server.js```
-	* top section add ```var widgett = require('./server/routes/WidgetAPI');```
+	* top section add ```var widget = require('./server/routes/WidgetAPI');```
 	* just before server is created add ```app.get('/widget', widget.get);```
 * test the API in browser ```http://localhost:3000/widget```
 
