@@ -235,9 +235,20 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * edit index.html near where app.js is and add ```<script src="scripts/lib/underscore-module.js"></script>``` 
 
 ## Configure LiveReload
+* edit ```Gruntfile.js``` , `files` section of ```livereload```
+	```
+	files: [
+      './client/app/index.html',
+      './client/app/views/*.html',
+      './client/app/styles/*.css',
+      './client/app/sounds/*.mp3',
+      './client/app/img/*.{png,jpg,jpeg,gif,webp,svg}'
+    ]
+    ```
+ 
+ * from the command line, root of project dir, enter ```grunt watch``` 
 
 ## Working with yo
-
-Rather than running commands from the root of the project directory, cd to client. Then can run, for example:
- ```yo angular:factory Deck```
-
+* ```cd client```
+* ```yo angular:route myroute```
+* similar for controller, factory, directive
