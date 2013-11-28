@@ -95,7 +95,91 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 
 * Test app is working by pointing your browser to http://localhost:3000
 
-## Add database and logging dependencies
+## Configure Mongo Database
+* ```mkdir dbinit```
+* ```cd dbinit```
+* ```touch widgets.json```
+* edit widgets.json - make it a json array with some simple data
+* ```cd dbinit```
+* ```mongoimport -d scafkata -c widgets --type json --jsonArray --drop widgets.json```
+	* replace ```scafkata``` with whatever you want your database to be called
+* cd ..
+* ```npm install winston --save```
+* ```npm install mongoose --save```
+* ```cd server```
+* ```mkdir lib```
+* ```cd lib```
+* ```touch log.js```
+* ```touch db.js```
+* edit ```log.js``` so it looks like this:
+	```
+	var logger = require('winston');
+	var fs = require('fs');
+	var path = require('path');
+
+	var logs_path = path.resolve(__dirname, "../logs");
+	if(!fs.existsSync(logs_path)) {
+		fs.mkdirSync(logs_path);
+	}
+
+	var logfile = __dirname + '/../logs/development.log';
+	if (process.env.NODE_ENV == 'production') {
+		logfile = __dirname + '/../logs/production.log';
+	}
+
+	logger.add(logger.transports.File, { filename: logfile });
+	module.exports = logger;
+	```
+
+* edit ```db.js``` so it looks like this:
+	```
+	var mongoose = require('mongoose');
+	var logger = require('./log');
+
+	var mongoURL = 'mongodb://127.0.0.1/scafkata';
+	mongoose.connect(mongoURL);
+
+	var db = mongoose.connection;
+	db.on('error', console.error.bind(console, 'connection error:'));
+	db.once('open', function callback() {
+		logger.info('mongoose connection is open');
+	});
+
+	var WidgetModel = mongoose.model('Widget', new mongoose.Schema({}, {strict: false}));
+	```
+
+* edit the top section of ```server.js``` to require db and log:
+	```
+	var logger = require('./server/lib/log');
+	var db = require('./server/lib/db');
+	```
+* start the server and make sure you can still hit the app
+
+## Implement a simple GET API
+* ```cd ../routes```
+*  ```touch WidgetAPI.js```
+* edit WidgetAPI.js to look like this:
+	```
+	var mongoose = require('mongoose');
+	var Widget = mongoose.model('Widget');
+
+	exports.get = function(req, res) {
+		Widget.find(function(err, data) {
+			if (err) {
+				logger.error(module + ' get all widget err: ' + err);
+				res.send(err);
+			} else {
+				console.log('data to be returned: ' + JSON.stringify(data));
+				res.json(data);
+			}
+		});
+	};
+	```
+
+* edit ```server.js```
+	* top section add ```var widgett = require('./server/routes/WidgetAPI');```
+	* just before server is created add ```app.get('/widget', widget.get);```
+* test the API in browser ```http://localhost:3000/widget```
 
 ## Upgrade Angular
 
