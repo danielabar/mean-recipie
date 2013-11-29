@@ -238,6 +238,7 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * edit ```Gruntfile.js``` , `files` section of ```livereload```
 	```
 	files: [
+	  './client/app/scripts/**/*.js',
       './client/app/index.html',
       './client/app/views/*.html',
       './client/app/styles/*.css',
@@ -247,6 +248,35 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
     ```
  
  * from the command line, root of project dir, enter ```grunt watch``` 
+
+## Add a nav bar
+* ```cd client```
+* ```yo angular:controller NavbarController```
+* edit NavbarController so that controller name is ```NavbarCtrl```
+* create a file client/app/views/navbar.html, edit to look something like:
+	```
+	<div class="navbar">
+	  <div class="navbar-inner">
+	    <a class="brand" href="/">Your Title</a>
+	    <ul class="nav">
+	      <li class="active"><a href="/">Home</a></li>
+	      <li><a href="/">Menu Item 1</a></li>
+	      <li><a href="/">Menu Item 2</a></li>
+	      <li><a href="/">Menu Item 3</a></li>
+	    </ul>
+	  </div>
+	</div>
+	```
+
+* Edit index.html around the main container section to look like this:
+	```
+	<div class="container">
+		<div ng-controller="NavbarCtrl">
+			<ng-include src="'views/navbar.html'"></ng-include>
+		</div>
+		<ng-view></ng-view>
+	</div>
+	```
 
 ## Working with yo
 * ```cd client```
