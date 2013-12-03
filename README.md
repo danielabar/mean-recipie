@@ -157,6 +157,12 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 	```
 	var logger = require('./server/lib/log');
 	var db = require('./server/lib/db');
+	var widget = require('./server/routes/WidgetAPI');
+	```
+
+* just before the line that starts the server, expose the get api
+	```
+	app.get('/widget', widget.get);
 	```
 * start the server and make sure you can still hit the app
 
