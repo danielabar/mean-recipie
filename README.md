@@ -40,8 +40,7 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * ```express -s```
 * ```npm install```
 * ```node app.js``` (should start server at port 3000, verify Express page is displayed in browser, then shut down server)
-* ```rm -rf public```
-* ```rm -rf views```
+* ```rm -rf public views```
 * ```mkdir server```
 * ```mv routes server```
 * ```mv app.js server.js```
@@ -55,10 +54,16 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * ```mv package.json package.json.express``` (because the yeoman generator will overwrite)
 * ```yo angular``` (yes to all questions except sass)
 * manually merge ```package.json.express``` contents into ```package.json```
-	* update version to 0.0.1
-	* optionally set private to true (to avoid accidentally publishing to npm)
-	* add scripts start, changing app.js to server.js
-	* copy express dependency (jade can be left out)
+	* ```"version": "0.0.1",```
+	* ```"private": true,```
+	* ```
+		"scripts": {
+    	"start": "node server.js",
+    	"test": "grunt test"
+  	}
+	```
+
+	* copy express dependency (jade can be left out) ``` "express": "3.4.2",```
 
 * rm package.json.express
 * edit ```server.js``` so static files are read from client app
