@@ -235,6 +235,7 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * edit index.html near where app.js is and add ```<script src="scripts/lib/underscore-module.js"></script>``` 
 
 ## Setup Bootstrap LESS Customization (2.3.2)
+These instructions are based on [Using Twitter Bootstrap the right way](http://ollomedia.com/using-twitter-bootstrap-the-right-way/)
 * ```cd ~/projects```
 * ```git clone https://github.com/twbs/bootstrap```
 * ```cd bootstrap```
@@ -244,8 +245,42 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * ```cd ../bunnyhill```
 * ```npm install less-middleware --save```
 * ```cd client/app```
+* ```mkdir less```
+* ```cd less```
+* ```touch layout.less misc.less style.less theme.less typography.less```
 * ```mkdir bootstrap```
 * Copy all the .less files from ```~/projects/bootstrap/less``` EXCEPT for tests folder to ```~/projects/bunnyhill/client/app/bootstrap```
+* Edit ```style.less``` so it looks like this
+
+	```
+	@import "../bootstrap/bootstrap.less";
+	@import "../bootstrap/responsive.less";
+	 
+	@import "layout.less"; 
+	@import "theme.less";
+	@import "typography.less";
+	@import "misc.less";
+	```
+
+* Initialize ```layout.less`` with comment to indicate its for Layout Customization
+* Initialize ```typography.less``` with comment to indicate its for Headings and Type Faces
+* Initialize ```theme.less``` to indicate its for Colors and Buttons etc
+* Initialize ```misc.less``` to indicate its for Mixins and Utility Classes
+* Edit ```index.html``` remove reference to bootstrap.css and replace with ```<link rel="stylesheet" href="styles/style.css">```
+* Delete bootstrap.css from project
+* Edit ```server.js```
+	* ```var lessMiddleware = require('less-middleware');``` 	
+	* just before the static definition, add this section to configure the less middleware
+	
+		```
+		app.use(lessMiddleware({
+		    dest: __dirname + '/client/app/styles',
+		    src: __dirname + '/client/app/less',
+		    paths: [path.join(__dirname, 'bootstrap')],
+		    prefix: '/styles',
+		    compress: true
+		}));
+		```
 
 ## Configure LiveReload
 * edit ```Gruntfile.js``` , `files` section of ```livereload```
