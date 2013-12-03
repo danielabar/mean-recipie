@@ -234,6 +234,19 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 
 * edit index.html near where app.js is and add ```<script src="scripts/lib/underscore-module.js"></script>``` 
 
+## Setup Bootstrap LESS Customization (2.3.2)
+* ```cd ~/projects```
+* ```git clone https://github.com/twbs/bootstrap```
+* ```cd bootstrap```
+* ```git tag -l```
+	* Verify v2.3.2 is in the list of tags
+* ```git checkout tags/v2.3.2```
+* ```cd ../bunnyhill```
+* ```npm install less-middleware --save```
+* ```cd client/app```
+* ```mkdir bootstrap```
+* Copy all the .less files from ```~/projects/bootstrap/less``` EXCEPT for tests folder to ```~/projects/bunnyhill/client/app/bootstrap```
+
 ## Configure LiveReload
 * edit ```Gruntfile.js``` , `files` section of ```livereload```
 	```
