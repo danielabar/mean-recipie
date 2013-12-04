@@ -43,6 +43,7 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * ```rm -rf public views```
 * ```mkdir server```
 * ```mv routes server```
+* ```rm routes/index.js routes/user.js```
 * ```mv app.js server.js```
 * edit ```server.js```, change ```require('./routes``` to ```require('./server/routes```
 * ```node server.js```
