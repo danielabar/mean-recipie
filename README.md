@@ -194,7 +194,7 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * test the API in browser ```http://localhost:3000/widget```
 
 ## Upgrade Angular and add some useful utilities
-# edit ```bower.json``` so it looks like this:
+* edit ```bower.json``` so it looks like this:
 	```
 	{
 	  "name": "quicktest",
