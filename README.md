@@ -260,8 +260,8 @@ These instructions are based on [Using Twitter Bootstrap the right way](http://o
 * ```cd less```
 * ```touch layout.less misc.less style.less theme.less typography.less```
 * ```cd ..```
-* ```mkdir bootstrap```
-* Copy all the .less files from ```~/projects/bootstrap/less``` EXCEPT for tests folder to ```~/projects/bunnyhill/client/app/bootstrap```
+* ```mkdir bootstrap && cd bootstrap```
+* ```cp ~/projects/bootstrap/less/*.less .```
 * Edit ```style.less``` so it looks like this
 
 	```
