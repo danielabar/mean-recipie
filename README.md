@@ -194,19 +194,37 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * test the API in browser ```http://localhost:3000/widget```
 
 ## Upgrade Angular and add some useful utilities
+# edit ```bower.json``` so it looks like this:
+	```
+	{
+	  "name": "quicktest",
+	  "version": "0.0.1",
+	  "appPath": "app",
+	  "dependencies": {
+	    "angular": "1.2.1",
+	    "json3": "~3.2.4",
+	    "jquery": "~1.9.1",
+	    "bootstrap-sass": "~2.3.1",
+	    "es5-shim": "~2.0.8",
+	    "angular-resource": "1.2.1",
+	    "angular-cookies": "1.2.1",
+	    "angular-sanitize": "1.2.1",
+	    "angular-route": "1.2.1",
+	    "angular-animate": "1.2.1",
+	    "angular-bootstrap": "0.6.0",
+	    "underscore": "1.5.2",
+	    "d3": "~3.3.11",
+	    "d3-tip": "0.6.2"
+	  },
+	  "devDependencies": {
+	    "angular-mocks": "1.2.1",
+	    "angular-scenario": "1.2.1"
+	  }
+	}
+	```
 * ```cd client```
-* ```bower install angular#1.2.1 --save```
-* ```bower install angular-route#1.2.1 --save```
-* ```bower install angular-resource#1.2.1 --save```
-* ```bower install angular-cookies#1.2.1 --save```
-* ```bower install angular-sanitize#1.2.1 --save```
-* ```bower install angular-animate#1.2.1 --save```
-* ```bower install angular-mocks#1.2.1 --save-dev```
-* ```bower install angular-scenario#1.2.1 --save-dev```
-* ```bower install angular-bootstrap#0.6.0 --save```
-* ```bower install underscore#1.5.2 --save```
-* ```bower install d3 --save```
-* ```bower install d3-tip#0.6.2 --save```
+* ```bower install```
+
 * modify the angular section of index.html so it looks like this:
 	```
 	<script src="bower_components/angular-route/angular-route.js"></script>
