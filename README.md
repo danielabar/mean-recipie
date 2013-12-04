@@ -195,6 +195,7 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * test the API in browser ```http://localhost:3000/widget```
 
 ## Upgrade Angular and add some useful utilities
+* delete all the contents of ```client/app/bower_components```
 * edit ```bower.json``` so it looks like this:
 
 	```
@@ -206,7 +207,6 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 	    "angular": "1.2.1",
 	    "json3": "~3.2.4",
 	    "jquery": "~1.9.1",
-	    "bootstrap-sass": "~2.3.1",
 	    "es5-shim": "~2.0.8",
 	    "angular-resource": "1.2.1",
 	    "angular-cookies": "1.2.1",
