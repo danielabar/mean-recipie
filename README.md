@@ -195,6 +195,7 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 
 ## Upgrade Angular and add some useful utilities
 * edit ```bower.json``` so it looks like this:
+
 	```
 	{
 	  "name": "quicktest",
@@ -222,6 +223,7 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 	  }
 	}
 	```
+	
 * ```cd client```
 * ```bower install```
 
