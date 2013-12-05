@@ -35,20 +35,15 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 ## Scaffolding Express
 
 * ```cd ~/projects```  (or wherever your projects directory is)
-* ```mkdir myproject``` (whatever you want your project to be called)
-* ```cd myproject```
+* ```mkdir myproject && cd myproject``` (whatever you want your project to be called)
 * ```express -s```
 * ```npm install```
 * ```node app.js``` (should start server at port 3000, verify Express page is displayed in browser, then shut down server)
 * ```rm -rf public views```
+* ```rm routes/index.js routes/user.js```
 * ```mkdir server```
 * ```mv routes server```
-* ```rm routes/index.js routes/user.js```
 * ```mv app.js server.js```
-* edit ```server.js```, change ```require('./routes``` to ```require('./server/routes```
-* ```node server.js```
-* Test app is working by pointing your browser to http://localhost:3000 (will be error about missing index because views were removed, that's ok, will soon be replaced with Angular views)
-
 
 ## Scaffolding Angular
 
@@ -102,21 +97,17 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * Test app is working by pointing your browser to http://localhost:3000
 
 ## Configure Mongo Database
-* ```mkdir dbinit```
-* ```cd dbinit```
+* ```mkdir dbinit && cd dbinit```
 * ```touch widgets.json```
 * edit widgets.json - make it a json array with some simple data
-* ```cd dbinit```
 * ```mongoimport -d scafkata -c widgets --type json --jsonArray --drop widgets.json```
 	* replace ```scafkata``` with whatever you want your database to be called
 * cd ..
 * ```npm install winston --save```
 * ```npm install mongoose --save```
 * ```cd server```
-* ```mkdir lib```
-* ```cd lib```
-* ```touch log.js```
-* ```touch db.js```
+* ```mkdir lib && cd lib```
+* ```touch log.js db.js```
 * edit ```log.js``` so it looks like this:
 	```
 	var logger = require('winston');
@@ -137,7 +128,7 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 	module.exports = logger;
 	```
 
-* edit ```db.js``` so it looks like this:
+* edit ```db.js``` so it looks like this, replacing ```scafkata``` with your database name:
 	```
 	var mongoose = require('mongoose');
 	var logger = require('./log');
@@ -161,10 +152,6 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 	var widget = require('./server/routes/WidgetAPI');
 	```
 
-* just before the line that starts the server, expose the get api
-	```
-	app.get('/widget', widget.get);
-	```
 * start the server and make sure you can still hit the app
 
 ## Implement a simple GET API
@@ -359,7 +346,7 @@ These instructions are based on [Using Twitter Bootstrap the right way](http://o
 	</div>
 	```
 
-## Working with yo
-* ```cd client```
-* ```yo angular:route myroute```
-* similar for controller, factory, directive
+## Add a route
+* From your project root directory, ```cd client```
+* ```yo angular:route menuitem1
+* edit ```navbar.html``` such that Menu Item 1 looks like ```<a href="/#/menuitem1">My Scores</a>```
