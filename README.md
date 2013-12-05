@@ -45,6 +45,12 @@ Optionally, also install ```nodemon```. This will watch any changes to node serv
 * ```mv routes server```
 * ```mv app.js server.js```
 
+## Install some useful server side utilities
+
+From root of your project directory
+* ```npm install underscore --save```
+* ```npm install async --save```
+
 ## Scaffolding Angular
 
 * ```mv package.json package.json.express``` (because the yeoman generator will overwrite)
